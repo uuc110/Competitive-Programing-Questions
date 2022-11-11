@@ -28,6 +28,7 @@ public:
         }
         return len;
     }
+
     ListNode* middleNode(ListNode *head) {
         if(head == NULL || head -> next == NULL){
             return head;
@@ -40,7 +41,6 @@ public:
 //            temp = temp -> next;
 //            count++;
 //        }
-
         ListNode* fast = head -> next;
         ListNode* slow = head;
         while(fast != NULL){
