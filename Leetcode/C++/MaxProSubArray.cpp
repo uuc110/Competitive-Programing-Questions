@@ -10,6 +10,10 @@ int MaxPro(vector<int>& nums){
     }
 
     for(int num : nums){
+        if(num == 0){
+            num = 1;
+            MaxPro = 1;
+        }
         CurrPro = CurrPro * num;
         if(MaxPro < CurrPro){
             MaxPro = CurrPro;
@@ -48,36 +52,45 @@ int maxProduct(vector<int>& nums) {
 }
 
 int main(){
-    freopen("output", "w", stdout);
-    srand(time(NULL));
-    int t= rand() % 10 +1;
-    cout << "Test Case: " << t << endl;
-    int m=1;
-    while(m<=t){
-        cout << "=========[ TEST CASE " << m << " ]==========" << endl;
-        int n = rand() % 10 +1 ;
-        cout << "Input: " << n << endl;
-        vector<int> nums(n);
-        cout << "Array: ";
-        for(int i=0; i<n; i++){
-            nums[i] = rand() % 11;
-            cout << nums[i] << " ";
-        }
-        cout << endl;
 
-        int CorrectSolution =  maxProduct(nums);
-        int MySolution = MaxPro(nums);
-        if(MySolution == CorrectSolution){
-            cout << "[✅] TEST CASE PASS" << endl;
-            cout << "Answer: " <<  MySolution << endl;
-        }else{
-            cout << "[❌] TEST CASE FAILED" << endl;
-            cout << "Your Answer: " << MySolution << endl;
-            cout << "Correct Answer: " << CorrectSolution << endl;
+//    freopen("output.txt", "w", stdout);
+//    srand(time(NULL));
+//    int t= rand() % 10 +1;
+//    cout << "Test Case: " << t << endl;
+//    int m=1;
+//    while(m<=t){
+//        cout << "=========[ TEST CASE " << m << " ]==========" << endl;
+//        int n = rand() % 10 +1 ;
+//        cout << "Input: " << n << endl;
+//        vector<int> nums(n);
+//        cout << "Array: ";
+//        for(int i=0; i<n; i++){
+//            nums[i] = rand() % 11;
+//            cout << nums[i] << " ";
+//        }
+//        cout << endl;
+//
+
+        int n;
+        cin >> n;
+        vector<int> nums(n);
+        for(int i=0; i<n;i++){
+            cin >> nums[i];
         }
-        m++;
-        if(m == t){
-            cout << "=================================" << endl;
-        }
-    }
+//
+            int MySolution = MaxPro(nums);
+            int CorrectSolution = maxProduct(nums);
+            if (MySolution == CorrectSolution) {
+                cout << "[✅] TEST CASE PASS" << endl;
+                cout << "Answer: " << MySolution << endl;
+            } else {
+                cout << "[❌] TEST CASE FAILED" << endl;
+                cout << "Your Answer: " << MySolution << endl;
+                cout << "Correct Answer: " << CorrectSolution << endl;
+            }
+//            m++;
+//            if (m == t) {
+//                cout << "=================================" << endl;
+//            }
+//        }
 }
