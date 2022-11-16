@@ -1,59 +1,28 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
 
-//wrtie a funtion which return pair of kth smallest and largest element
-// if k is greater than size of array return -1
-// if k is 0 return -1
-// first sort the array and rempve the all duplicate element
-// then resize the array and return the kth smallest and largest element
+class Solution {
+public:
+    int removeStones(vector<vector<int>>& stones) {
+        int count = 0;
 
-pair<int, int> KthSAndL(vector<int> arr, int n, int k) {
-    for (int i = 0; i < n; i++) {
-        if (arr[i] == arr[i + 1]) {
-            arr.erase(arr.begin() + i);
-            n--;
-        }
-    }
-    pair<int, int> p;
-    if (k > n || n == 0 || k == 0) {
-        return make_pair(-1, -1);
-    }
-    return make_pair(arr[k - 1], arr[n - k]);
-}
-
-
-int main() {
-    int t;
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
-//    stdsteam("input.txt", "r", stdin);
-    cin >> t;
-    while (t--) {
-        int n, k;
-        cin >> n >> k;
-        vector<int> arr(n);
-        for (int i = 0; i < n; i++) {
-            cin >> arr[i];
-        }
-
-        for (int i = 0; i < n; i++) {
-            if (arr[i] == arr[i + 1]) {
-                arr.erase(arr.begin() + i);
-                n--;
+        if(stones.size() == 0)
+            return 0;
+        for(int i=0; i< stones.size() ;i++){
+            if(stones[i][0] == stones[i][1]){
+                count++;
+                stones.erase(stones.begin()+i);
+                i--;
             }
         }
-        pair<int, int> p;
-        if (k > n || n == 0 || k == 0) {
-            cout << "-1 -1" << endl;
-            continue;
-        }
-
-        for(int x: arr){
-            cout << x;
-        }
-
+        return count;
     }
+};
+
+int main() {
+    Solution s;
+    vector<vector<int>> stones = {{0,0},{0,1},{1,0},{1,2},{2,1},{2,2}};
+    cout << s.removeStones(stones) << endl;
     return 0;
 }

@@ -25,6 +25,12 @@ public:
 };
 
 
+int main(){
+    Solution s;
+    vector<string> S{"ninja", "night", "nintendo", "ninjatsu"};
+    s.longestCommonPrefix(S);
+}
+
 /*
  * what does arr[0][i] mean in string? arr[0][i] means the ith character of the first string
  */
