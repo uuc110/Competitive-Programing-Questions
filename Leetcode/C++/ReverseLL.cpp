@@ -1,57 +1,32 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
-
-class ListNode {
+class Node{
 public:
-    int val;
-    ListNode *next;
+    int data;
+    Node* next;
 
-    ListNode(int x) {
-        val = x;
-        next = NULL;
-    }
+    Node(int data){
+       this-> data= data;
+       this -> next = NULL;
+   }
+
+
 };
 
-
-class Solution {
-public:
-
-
-
-    int getlen(ListNode* head) {
-        int len = 0;
-        while(head != nullptr){
-            head = head -> next;
-            len++;
-        }
-        return len;
+Node* insertAttail(Node* &tail, int d){
+    Node* temp = new Node(d);
+       Tail -> next = temp;
+       tail = temp;
     }
+}
 
-    ListNode* middleNode(ListNode *head) {
-        if(head == NULL || head -> next == NULL){
-            return head;
-        }
-//        int len = getlen(head);
-//        int ans = (len/2) +1 ;
-//        ListNode* temp = head;
-//        int count= 0;
-//        while(count <= ans){
-//            temp = temp -> next;
-//            count++;
-//        }
-        ListNode* fast = head -> next;
-        ListNode* slow = head;
-        while(fast != NULL){
-            fast = fast -> next;
-            if(fast!=NULL){
-                fast = fast -> NULL;
-            }
-            slow = slow -> next;
-        }
-        return  slow;
-//        return temp;
 
-    }
-};
+int main(){
+    Node* temp = new Node(1);
+    Node* head = temp;
+    Node* tail = temp;
+
+
+
+}
