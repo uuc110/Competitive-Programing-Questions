@@ -15,7 +15,13 @@ public:
 };
 
 int main(){
+
+clock_t start = clock();
+std::ios::sync_with_stdio(false);
     Solution s;
-    cout << s.climbStairs(9);
+    cout << s.climbStairs(45);
+cout << "\n";
+cout << "Time taken: " << (double)(clock() - start) / (double)CLOCKS_PER_SEC << " \n";
+
     return 0;
 }

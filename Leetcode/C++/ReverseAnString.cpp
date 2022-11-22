@@ -25,8 +25,15 @@ string reverseWords(string s) {
 }
 
 int main(){
+
+    std::ios::sync_with_stdio(false);
+
+    clock_t start = clock();
     string str = "  hello world  ";
     cout << reverseWords(str);
+    cout << "\n";
+    cout << "Time taken: " << (double)(clock() - start) / (double)CLOCKS_PER_SEC << " \n";
+
     return 0;
 }
 
