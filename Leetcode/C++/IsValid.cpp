@@ -6,29 +6,24 @@ public:
     bool isValid(string s) {
 
         stack<char> st;
-
-        for(int i=0; i< s.length(); i++){
-            if(s[i] == '(' || s[i] == '{' || s[i] == '['){
+        for (int i = 0; i < s.length(); i++)
+        {
+            if (s[i] == '(' || s[i] == '[' || s[i] == '{')
                 st.push(s[i]);
-            }
-            else if(s[i] == ')' || s[i] == '}' || s[i] == ']')
+            else
             {
-                if(st.empty()){
+                if (st.empty())
                     return false;
-                }
-
-                char top = st.top();
+                if (s[i] == ')' && st.top() != '(')
+                    return false;
+                if (s[i] == ']' && st.top() != '[')
+                    return false;
+                if (s[i] == '}' && st.top() != '{')
+                    return false;
                 st.pop();
-
-                if(s[i] == ')' && top != '(') return false;
-
-                if(s[i] == '}' && top != '{') return false;
-
-                if(s[i] == ']' && top != '[') return false;
             }
         }
-        if(st.empty()) return true;
-
+        return st.empty();
     }
 };
 
@@ -36,6 +31,10 @@ int main(){
     Solution s;
     string str;
     cin >> str;
-    cout << s.isValid(str);
+    if(s.isValid(str)){
+        cout << "balanced \n";
+    }else{
+        cout << "Not Balanced \n";
+    }
     return 0;
 }
