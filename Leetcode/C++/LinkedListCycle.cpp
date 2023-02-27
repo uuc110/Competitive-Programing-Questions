@@ -31,8 +31,5 @@ public:
 
 
 int main(){
-
-    link
-
     return 0;
 }
