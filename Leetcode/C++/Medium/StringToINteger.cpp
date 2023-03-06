@@ -1,8 +1,8 @@
-/* Question No. & Title :
+/* Question No. & Title : https://leetcode.com/problems/string-to-integer-atoi/description/
  * Description :
- * Follow up :
- * Example 1 :
- * Example 2 :
+ * Implement atoi which converts a string to an integer.
+ * The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from this character, takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value.
+ * The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function.
  * Note :
  */
 #include <bits/stdc++.h>
