@@ -12,23 +12,29 @@ using namespace std;
 class Solution {
 public:
     int myAtoi(string s) {
-        int result = 0;
+        if(s.empty()){return 0;}
+        long result = 0;
         int sign = 1;
-        for (char i: s) {
-            if ((i >= '0' && i <= '9') || i == '+' || i == '-') {
-                if (i == '-' || i == '+')
-                    sign = (i == '-') ? -1 : 1;
-                else {
-                    result = result * 10 + (int) i - 48;
-                    if (sign * result < INT_MIN)
-                        return INT_MIN;
-                    if (sign * result > INT_MAX)
-                        return INT_MAX;
+        for(char i : s){
+            if(i == '-' || i == ' '){
+                if(i == '-'){
+                    sign = -1;
                 }
+                continue;
             }
+            if(!isdigit(i))
+                break;
+            result = result*10 + (i-'0');
+            if(result*sign > INT_MAX){
+                return INT_MAX;
+            }
+            if (result*sign < INT_MIN) return INT_MIN;
         }
-        return sign * result;
+        return result*sign;
     }
+
+private:
+
 };
 
 
