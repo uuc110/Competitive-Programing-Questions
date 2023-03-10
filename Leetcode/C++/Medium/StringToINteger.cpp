@@ -1,9 +1,37 @@
-/* Question No. & Title : https://leetcode.com/problems/string-to-integer-atoi/description/
- * Description :
- * Implement atoi which converts a string to an integer.
- * The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from this character, takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value.
- * The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function.
- * Note :
+/* Question No. & Title : 8. String to Integer (atoi)
+ * Problem Statement : Implement the myAtoi(string s) function, which converts a string to a 32-bit signed integer (similar to C/C++'s atoi function).
+ * Follow up :  The algorithm for myAtoi(string s) is as follows:
+ *             1. Read in and ignore any leading whitespace.
+ *             2. Check if the next character (if not already at the end of the string) is '-' or '+'. Read this character in if it is either. This determines if the final result is negative or positive respectively. Assume the result is positive if neither is present.
+ *             3. Read in next the characters until the next non-digit charcter or the end of the input is reached. The rest of the string is ignored.
+ *             4. Convert these digits into an integer (i.e. "123" -> 123, "0032" -> 32). If no digits were read, then the integer is 0. Change the sign as necessary (from step 2).
+ *             5. If the integer is out of the 32-bit signed integer range [-231, 231 - 1], then clamp the integer so that it remains in the range. Specifically, integers less than -231 should be clamped to -231, and integers greater than 231 - 1 should be clamped to 231 - 1.
+ * Example 1 :  Input: s = "word with 987"
+ *              Output: 0
+ * Example 2 :  Input: s = "   -42"
+ *              Output: -42
+ * Note: 1. Only the space character ' ' is considered a whitespace character.
+ *      2. Do not ignore any characters other than the leading whitespace or the rest of the string after the digits.
+ *      3. The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function.
+ *
+ * Approach : Steps =>
+ *               1. If string is empty, return 0
+ *               2. Remove all spaces from string
+ *               3. Check if first character is '-' or '+', if yes, store it in sign variable
+ *               4. If first character is '-' or '+', remove it from string
+ *               5. Iterate through string
+ *               6. If character is not a digit, break
+ *               7. Multiply ans by 10 and add character - '0'
+ *               8. If ans*sign > INT_MAX, return INT_MAX
+ *               9. If ans*sign < INT_MIN, return INT_MIN
+ *               10. Return ans*sign
+ *              Time Complexity : O(n)
+ *              Space Complexity : O(1)
+ *              Runtime : 4 ms
+ *              Memory : 6.4 MB
+ *              Beats : 57.14 % of cpp submissions
+ *              Difficulty : Medium
+ *              Ref : https://leetcode.com/problems/string-to-integer-atoi/
  */
 #include <bits/stdc++.h>
 
@@ -12,35 +40,35 @@ using namespace std;
 class Solution {
 public:
     int myAtoi(string s) {
-        if(s.empty()){return 0;}
-        long result = 0;
-        int sign = 1;
-        for(char i : s){
-            if(i == '-' || i == ' '){
-                if(i == '-'){
-                    sign = -1;
-                }
-                continue;
-            }
-            if(!isdigit(i))
-                break;
-            result = result*10 + (i-'0');
-            if(result*sign > INT_MAX){
-                return INT_MAX;
-            }
-            if (result*sign < INT_MIN) return INT_MIN;
+        if(s.empty()) return 0;
+        long ans = 0;
+        s = removeSpaces(s);
+        const int sign = s[0] == '-' ? -1 : 1;
+        if(s[0] == '-' || s[0] == 1){
+            s= s.substr(1);
         }
-        return result*sign;
+        for(auto i : s){
+
+            if(!isdigit(i)) break;
+            ans = ans*10 + i - '0';
+            if(ans*sign > INT_MAX) return INT_MAX;
+            if(ans*sign < INT_MIN) return INT_MIN;
+        }
+        return ans*sign;
     }
 
 private:
-
+    string removeSpaces(string str)
+    {
+        str.erase(remove(str.begin(), str.end(), ' '), str.end());
+        return str;
+    }
 };
 
 
 int main() {
     Solution s;
-    string str = "words and 987";
+    string str = "    -42";
     cout << s.myAtoi(str) << endl;
 
 
