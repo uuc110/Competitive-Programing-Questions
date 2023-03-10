@@ -6,17 +6,11 @@ string ltrim(const string &);
 string rtrim(const string &);
 vector<string> split(const string &);
 
-/*
- * Complete the 'miniMaxSum' function below.
- *
- * The function accepts INTEGER_ARRAY arr as parameter.
- */
 
 void miniMaxSum(vector<int> arr) {
     int skip = 0;
-    int Sum = 0;
-    int n = arr.size();
-    vector<int> sum;
+    long long int Sum = 0LL; // 64 bit integer to store the sum of the array
+    vector<long long int> sum; // vector to store the sum of the array after removing one element
     for (int i=0; i < arr.size(); i++) {
         for(int j=0; j < arr.size();j++){
             if(skip == j){continue;}
@@ -27,8 +21,9 @@ void miniMaxSum(vector<int> arr) {
         skip++;
     }
 
-    int MaxSUm = INT_MIN;
-    int MinSUm =INT_MAX;
+    long long int MaxSUm = INT64_MIN; //We can also use INT_LEAST64_MAX, and also we have to keep in mind that the
+    // sum of the array can be negative, and its should int64_min to get the minimum sum
+    long long int MinSUm = INT_LEAST64_MAX; // similarly we can use INT64_MAX to get the maximum sum
     for(auto i : sum){
         if(i > MaxSUm){
             MaxSUm = i;
