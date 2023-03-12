@@ -11,3 +11,4 @@ CMakeLists.txt
 .vscode/
 cmake-build-debug/
 .cph/
+Sample.cpp
