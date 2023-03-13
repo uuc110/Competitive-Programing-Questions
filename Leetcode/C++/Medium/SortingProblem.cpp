@@ -20,7 +20,6 @@
  *              Beats : 39.60%
  *              Difficulty : Medium
  *              Ref : https://www.youtube.com/watch?v=ZRPoEKHXTJg
- *
  */
 
 #include "iostream"
@@ -74,10 +73,16 @@ public:
 
 int main(){
     Solution S;
+
+    clock_t start = clock();
+    std::ios::sync_with_stdio(false);
     vector<int> arr = {5,2,3,1};
     vector<int> result = S.sortArray(arr);
     for(int i = 0; i < result.size(); i++){
         cout << result[i] << " ";
     }
+    cout << "\n";
+    cout << "Time taken: " << (double)(clock() - start) / (double)CLOCKS_PER_SEC << " \n";
+
     return 0;
 }

@@ -44,8 +44,50 @@ private:
             temp = temp -> next;
         }
 
-        sort(arr.begin(), arr.end());
+        sortArray(arr);
         return arr;
+    }
+
+    void conquer(vector<int> &arr, int start, int mid, int ending, vector<int>& tempArr){
+
+        int index1 = start;
+        int index2 = mid +1;
+        int x = 0;
+
+        while(index1 <= mid && index2 <= ending){
+            if(arr[index1] <= arr[index2]){
+                tempArr[x++] = arr[index1++];
+            }else{
+                tempArr[x++] = arr[index2++];
+            }
+        }
+
+        while(index1 <= mid){
+            tempArr[x++] = arr[index1++];
+        }
+
+        while(index2<=ending){
+            tempArr[x++] = arr[index2++];
+        }
+
+        for(int i = 0; i < x; i++){
+            arr[start+i] = tempArr[i];
+        }
+    }
+
+    void divide(vector<int> &arr, int start, int ending, vector<int>& temparr){
+        if(start >= ending) return;
+        int mid = start + (ending - start) / 2;
+
+        divide(arr, start, mid,temparr);
+        divide(arr, mid+1, ending, temparr);
+        conquer(arr, start, mid, ending,temparr);
+    }
+
+    vector<int> sortArray(vector<int>& nums) {
+        vector<int> TempArrr(nums.size());
+        divide(nums, 0, nums.size()-1, TempArrr);
+        return nums;
     }
 };
 
