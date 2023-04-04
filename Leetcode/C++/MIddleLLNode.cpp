@@ -38,9 +38,9 @@ public:
         ListNode* slow = head;
         while(fast != NULL){
             fast = fast -> next;
-            if(fast!=NULL){
-                fast = fast -> NULL;
-            }
+//            if(fast!=NULL){
+//                fast = fast -> NULL;
+//            }
             slow = slow -> next;
         }
         return  slow;

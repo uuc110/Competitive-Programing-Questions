@@ -71,7 +71,7 @@ int main(){
     insertAttail(tail,8);
     insertAttail(tail,9);
     insertAttail(tail,10);
-    insertatPosition(tail, head, 78, );
+    insertatPosition(tail, head, 78);
     print(head);
     return 0;
 }

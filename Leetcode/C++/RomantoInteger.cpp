@@ -3,8 +3,8 @@ using namespace std;
 
 class Solution {
 public:
-    int romanToInt(string str) {
-        unordered_map<char, int> RomanToInt = {
+    int romanToInt(string s) {
+        unordered_map<char, int> rtn = {
                 {'I', 1},
                 {'V', 5},
                 {'X', 10},
@@ -15,13 +15,12 @@ public:
         };
 
         int sum = 0;
-        for (int i = 0; i < str.length(); i++) {
-//            if (i > 0 && RomanToInt[str[i]] > RomanToInt[str[i - 1]]) {
-//                sum += RomanToInt[str[i]] - 2 * RomanToInt[str[i - 1]];
-//            } else {
-                sum += RomanToInt[str[i]];
-//            }
-
+        for (int i = 0; i < s.length(); ++i) {
+            if (i > 0 && rtn[s[i]] > rtn[s[i - 1]]) {
+                sum += rtn[s[i]] - 2 * rtn[s[i - 1]];
+            } else {
+                sum += rtn[s[i]];
+            }
         }
         return sum;
     }

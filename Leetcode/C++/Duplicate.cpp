@@ -9,9 +9,9 @@ public:
         int Maximum = max(nums[0], nums[nums.size()]);
         int XOR =0;
         for(int i: nums){
-           i = i
+           i = i;
         }
-
+        return 2;
     }
 };
 

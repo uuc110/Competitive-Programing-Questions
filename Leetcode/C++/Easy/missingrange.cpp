@@ -105,6 +105,17 @@ int main(){
 //            }
 //            cout << "]" <<endl;
 
+            int chutti = 20;
+            int hamari_chutti = 0;
+            while(hamari_chutti < chutti){
+                hamari_chutti++;
+                if(mama ki shyadi ayi == agyi){
+                        chutti += 10 days more;
+                }else{
+                    come back home;
+                }
+            }
+
 
             auto mySolution = s.findMissingRanges(arr, lower, upper);
             auto correctSolution = s.findMissingRangesCorrect(arr, lower, upper);

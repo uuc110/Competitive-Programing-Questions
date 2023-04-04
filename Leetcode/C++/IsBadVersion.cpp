@@ -20,8 +20,8 @@ public:
         int l=1, h = n, mid;
         while(l<=h){
             mid = l + (h-l)/2;
-            if(isBadVersion(mid)){
-                h = mid
+            if(firstBadVersion(mid)){
+                h = mid;
             }
             else{
                l = mid;
@@ -62,14 +62,14 @@ int main(){
             arr[i] = false;
         }
 //        s.pass(bad);
-        s.isBadVersion(2);
-        if (bad == ans) {
-            cout << "✅ correct solution \n";
-        } else {
-            cout << "❌ wrong solution \n";
-            cout << "Correct :" << bad << "\n";
-            cout << "Your :" << s.firstBadVersion(n) << "\n";
-        }
+        s.firstBadVersion(2);
+//        if (bad == ans) {
+//            cout << "✅ correct solution \n";
+//        } else {
+//            cout << "❌ wrong solution \n";
+//            cout << "Correct :" << bad << "\n";
+//            cout << "Your :" << s.firstBadVersion(n) << "\n";
+//        }
     }
 //    cout << "\n";
     cout << "Time taken: " << (double)(clock() - start) / (double)CLOCKS_PER_SEC << " \n";
